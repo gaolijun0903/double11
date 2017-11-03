@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no, initial-scale=1">
+		<meta name="screen-orientation" content="portrait"><!-- uc强制竖屏 -->
+		<meta name="x5-orientation" content="portrait"><!-- QQ强制竖屏 -->
+		<title>双十一抽奖活动</title>
+		<style type="text/css">
+		 * { padding:0; margin:0;-webkit-tap-highlight-color: rgba(0,0,0,0); box-sizing: border-box;}
+		HTML ,body { font-size:12px;height:100%;width:100%; font-family: "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
+		li { list-style-type:none;}
+		.wrapper{width: 100%;min-height: 100%;background-image: url(img/bg.jpg);background-size: 100%;}
+		.prize-type{
+			height: 105px;
+			margin-top: -18px;
+			padding: 0 15px;
+		} 
+		.timer{
+			margin: 28px  0 0;
+			height: 180px;
+			position: relative;
+		}
+		.timer .timer-title{
+			position: absolute;
+			top: 12px;
+			left: 0;
+			width: 100%;
+			height: 33px;
+			line-height: 33px;
+			font-size: 24px;
+			font-weight: 400;
+			color: deepskyblue;
+		}
+		.timer .timer-num{
+			position: absolute;
+			top: 0;
+			left: 60%;
+		}
+		.timer .timer-text{
+			position: absolute;
+			top: 70px;
+			left: 0;
+			width: 100%;
+    		text-align: center;
+		}
+		.timer .timer-text-order{
+			font-size: 18px;
+			line-height: 60px;
+    		color: #fff;
+		}
+		.timer .timer-text-order .order-num{
+			font-weight: 600;
+    		color: #ffea00;
+		}
+		.timer .timer-text-more{
+			font-size: 16px;
+    		color: #d4aeff;
+		}
+		.draw{
+			position: relative;
+			height: 340px;
+			margin-top: 22px;
+		}
+		.draw .draw-bg{
+			position: absolute;
+			width: 92%;
+			height: 340px;
+    		left: 4%;
+		}
+		.draw .draw-box-btn{
+			position: relative;
+		    top: 50px;
+		    left: 33%;
+		    z-index: 10;
+		    width: 34%;
+		}
+		.draw .draw-box{
+			margin-bottom: 10px;
+		}
+		.draw .draw-prize{
+			position: absolute;
+			top: 2%;
+			right: 8%;
+			width: 34%;
+			z-index: 10;
+		}
+		.lucky-list{
+			position: relative;
+    		left: 4%;
+    		margin-top: 18px;
+			height: 500px;
+			width: 92%;
+		}
+		.lucky-list .lucky-title{
+			position: absolute;
+			top: 0;
+			left: 20%;
+			width: 60%;
+			z-index: 10;
+		}
+		.lucky-list .lucky-bg{
+			position: absolute;
+			top: 6%;
+			width: 98%;
+    		max-height: 450px;
+    		overflow-y: hidden;
+			padding:30px 0 10px;
+			background: #6844eb;
+			border-radius: 10px;
+			text-align: center;
+			font-size: 16px;
+			line-height: 30px;
+		}
+		.lucky-list .lucky-bg .list-body{
+			overflow-y: scroll;
+    		max-height: 400px;
+		}
+		.lucky-list .lucky-bg .list-title .cell{
+			color: #fff;
+			display: inline-block;
+		}
+		.lucky-list .lucky-bg .list-item .cell{
+			color: #d4aeff;
+			height: 30px;
+			display: inline-block;
+			overflow: hidden;
+		}
+		.lucky-list .lucky-bg .name{
+			width: 25%;
+		}
+		.lucky-list .lucky-bg .tel{
+			width: 35%;
+		}
+		.lucky-list .lucky-bg .prize{
+			width: 36%;
+		}
+		
+		
+		
+		.mask-wrapper{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			z-index: 20;
+		}
+		.mask-wrapper .mask-inner{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-140px,-140px);
+			width: 280px;
+			height: 280px;
+			background: url(img/mask-win.png);
+			background-size: 100%;
+			
+		}
+		.mask-wrapper .mask-inner .mask-btn{
+			margin: 140px auto;
+			width: 220px;
+			height: 46px;
+			background: url(img/mask-btn-none.png);
+			background-size: 100%;
+		}
+		.mask-wrapper .mask-inner .mask-prize{
+			text-align: center;
+		    font-size: 16px;
+		    color: yellow;
+		    padding-top: 56px;
+		}
+		
+		</style>
+		
+		<script src="js/vue.min.js"></script>
+		<script src="js/vue.js"></script>
+		<!--<{asset:media/s/js/201711/vue.js}>-->
+		<!--<script src="http://i2.yongche.name/s/js/201711/vue.js?1478153218"></script>-->
+		
+	</head>
+	<body>
+		<div id="app">
+			<div class="wrapper">
+				<div class="head">
+					<img src="img/bg-head1.png" width="100%"/>
+				</div>
+				<div class="prize-type">
+					<img v-bind:src="currentPrizeType" width="100%"/>
+				</div>
+				<div class="timer">
+					<img src="img/timer-bg.png" width="100%" height="100%"/>
+					<div class="timer-title">
+						<img class="timer-title-img" src="img/timer-title.png" width="100%" height="100%"/>
+						<span id="timer-num" class="timer-num"></span>
+					</div>
+					<div class="timer-text">
+						<div class="timer-text-order">当前完成“随叫随到”订单数<span id="order-num" class="order-num" >{{orderNums}}</span>单</div>
+						<div class="timer-text-more">完成订单越多，中奖率越高</div>
+					</div>
+				</div>
+				<div class="draw">
+					<div class="draw-bg">
+						<img src="img/draw-bg.png" width="100%" height="100%" />
+					</div>
+					<div class="draw-bg">
+						<img src="img/draw-bg1.png" width="100%" height="100%" />
+					</div>
+					<div class="draw-box-btn">
+						<div class="draw-box">
+							<img src="img/draw-box.png" width="100%"/>
+						</div>
+						<div class="draw-btn">
+							<img src="img/draw-btn-disable.png" width="100%"/>
+						</div>
+					</div>
+					<div class="draw-prize">
+						<img v-bind:src="currentDrawPrizeType" width="100%"/>
+					</div>
+				</div>
+				<div class="lucky-list">
+					<div class="lucky-title">
+						<img src="img/lucky-title.png" width="100%"/>
+					</div>
+					<div class="lucky-bg">
+						<div class="list-title">
+							<div class="cell name">姓名</div>
+							<div class="cell tel">手机号</div>
+							<div class="cell prize">奖品</div>
+						</div>
+						<div class="list-body">
+							<div class="list-item" v-for="item in luckyList">
+								<div class="cell name">{{item.name}}</div>
+								<div class="cell tel">{{item.cellphone}}</div>
+								<div class="cell prize">{{item.prize}}</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="mask-wrapper" v-show="showMask">
+				<div class="mask-inner">
+					<div class="mask-prize">充电宝</div>
+					<div class="mask-btn"></div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<script src="js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript">
+
+var dateTimes= ["2017-11-11 10:00:00","2017-11-11 13:00:00","2017-11-11 17:00:00","2017-11-11 20:00:00"];
+function toTimeStamp(arr){
+	var times = [];
+	arr.forEach(function(time,idx){
+		times.push(Date.parse(new Date(time)))
+	})
+	return times;
+}
+
+var timeStamps = toTimeStamp(dateTimes);
+//console.log(timeStamps);
+
+
+//获取活动信息司机ID
+    var urlParam = function(queryParam){
+            var query = window.location.search.substr(1);
+            var reg = /([^=&\s]+)[=\s]*([^=&\s]*)/g;
+            var paramValue,result = {};
+            while(reg.exec(query)){
+                result[RegExp.$1] = RegExp.$2;
+            }
+            paramValue = result[queryParam];
+            return paramValue;
+       }
+ //var key = 'n9rqe1dw88wc0ws0';
+ var driver_id = urlParam('driver_id');
+     driver_id = 50056790
+ 
+ 
+
+new Vue({
+  el: '#app',
+  data:{
+  	isLogin:false,
+  	prizeTypes:["img/prize-type1.png","img/prize-type2.png","img/prize-type3.png","img/prize-type4.png","img/prize-type0.png"],
+  	drawPrizeTypes:["img/draw-prize1.png","img/draw-prize24.png","img/draw-prize3.png","img/draw-prize24.png",""],
+  	currentTimeStamp:1509688081,
+  	currentTimeRange:1,
+	orderNums:10,
+	drawBtn:false,
+	luckyList:[
+		{
+            "id": 9,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 10,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "净化器"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "充电宝"
+        },
+        {
+            "id": 10,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "净化器"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "充电宝"
+        },
+        {
+            "id": 10,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "净化器"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "充电宝"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "净化器"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "充电宝"
+        },
+        {
+            "id": 10,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "净化器"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "免佣金"
+        },
+        {
+            "id": 11,
+            "name": "易到测试司机16825825825",
+            "cellphone": 16825825825,
+            "prize": "充电宝"
+        }
+    ],
+	showMask:false
+  },
+  computed:{
+  	currentPrizeType:function(){
+  		var idx = this.currentTimeRange;
+		return this.prizeTypes[idx];
+  	},
+  	currentDrawPrizeType:function(){
+  		var idx = this.currentTimeRange;
+		return this.drawPrizeTypes[idx];
+  	}
+  },
+  mounted(){
+//	this.getOrderNum();
+  },
+  methods:{
+  	
+  	getOrderNum:function (){// 获取随叫随到订单数
+  		var vm = this;
+		$.ajax({
+             type: "GET",
+             url: "http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getOrderNum?driver_id="+driver_id,
+             dataType:'jsonp',
+             jsonp:'callback',
+             success: function(data){
+             	if(data.code==200){
+             		console.log(data)
+             		vm.orderNums = data.result.count;
+             		vm.currentTimeStamp = data.result.currentTimeStamp;
+             		vm.currentTimeRange = data.result.currentTimeRange;
+             		vm.isLogin = data.result.isLogin;
+             		vm.isClick = data.result.isClick;
+             		vm.luckyList = data.result.driverList;
+             	}
+              },
+              error:function(e){
+                alert(JSON.stringify(e));
+              }
+        });
+	}
+  }
+})
+
+
+</script>
+	</body>
+</html>
