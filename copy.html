@@ -171,8 +171,14 @@
 		
 		</style>
 		
-		<script src="js/vue.min.js"></script>
-		<script src="js/vue.js"></script>
+		<!--<script src="js/vue.min.js"></script>-->
+		<!--<script src="js/vue.js"></script>-->
+		<!--<script src="js/jsonp.js"></script>-->
+		<script src="http://i1.yongche.name/s/js/201711/jsonp.js?1478153218"></script>
+		<script src="http://i3.yongche.name/s/js/201711/vue.min.js?1478153218"></script>
+		<!--<{asset:media/s/js/201711/jsonp.js}>-->
+		<!--<{asset:media/s/js/201711/vue.min.js}>-->
+			
 	</head>
 	<body>
 		<div id="app">
@@ -246,33 +252,13 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		<script src="js/jquery-2.0.0.min.js"></script>
-		<script src="js/jsonp.js"></script>
-		
+			
 <script type="text/javascript">
-
-//获取活动信息司机ID
-//var urlParam = function(queryParam){
-//  var query = window.location.search.substr(1);
-//  var reg = /([^=&\s]+)[=\s]*([^=&\s]*)/g;
-//  var paramValue,result = {};
-//  while(reg.exec(query)){
-//      result[RegExp.$1] = RegExp.$2;
-//  }
-//  paramValue = result[queryParam];
-//  return paramValue;
-//}
-//var driver_id = urlParam('driver_id');
-//   driver_id = 50056790
-// 
 
 new Vue({
   el: '#app',
   data:{
-	dateTimes:["2017-11-11 10:00:00","2017-11-11 13:00:00","2017-11-11 17:00:00","2017-11-04 20:00:00"],
-//	timeStamps:this.toTimeStamp(this.dateTimes),
+	dateTimes:["2017-11-11 10:00:00","2017-11-11 13:00:00","2017-11-4 16:51:00","2017-11-04 20:00:00"],
 	driver_id : 50056790,
 	timeStamps:[1510365600, 1510376400, 1510390800, 1509796800],
 //	driver_id:urlParam(driver_id),
@@ -354,37 +340,29 @@ new Vue({
   	}
   },
   mounted(){
+  	this.timeStamps = this.toTimeStamp(this.dateTimes);//测试
 	this.initData();
   },
   methods:{
   	initData:function (){// 获取随叫随到订单数
   		var vm = this;
-		$.ajax({
-             type: "GET",
-             url: "http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id="+vm.driver_id,
-             dataType:'jsonp',
-             jsonp:'callback',
-             success: function(data){
-             	if(data.code==200){
-             		console.log(data)
-             		vm.isLogin = data.result.isLogin;
+		JSONP.get("http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id="+vm.driver_id, function (data) {
+   			if(data.code==200){
+         		console.log(data)
+         		vm.isLogin = data.result.isLogin;
 //           		if(vm.isLogin==0){
 //           			vm.showMask=true;
 //           		}
-             		vm.orderNums = data.result.count;
-             		vm.currentTimeStamp = data.result.currentTimeStamp;
-             		vm.currentTimeRange = data.result.currentTimeRange;
-             		vm.isClick = data.result.isClick;
-             		vm.luckyList = data.result.driverList;
-             		
-             		vm.getOffsetTimeStamps()
-					vm.getCountdown();
-             	}
-              },
-              error:function(e){
-                alert(JSON.stringify(e));
-              }
-        });
+         		vm.orderNums = data.result.count;
+         		vm.currentTimeStamp = data.result.currentTimeStamp;
+         		vm.currentTimeRange = data.result.currentTimeRange;
+         		vm.isClick = data.result.isClick;
+         		vm.luckyList = data.result.driverList;
+         		
+         		vm.getOffsetTimeStamps()
+				vm.getCountdown();
+            }
+ 		});
 	},
 	getResult:function(){//点击抽奖
 		console.log(this.isClick);
@@ -393,31 +371,21 @@ new Vue({
 		}
 		this.isClick = -1//已经点击过了
 		var vm = this;
-		
-		$.ajax({
-             type: "GET",
-             url: "http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getResult?driver_id="+vm.driver_id,
-             dataType:'jsonp',
-             jsonp:'callback',
-             success: function(data){
-             	vm.showMask=true;
-             	vm.initData();//刷新页面
-             	if(data.code==200){//中奖了
-             		vm.maskType=1;
-             		vm.winPrize=data.msg;
-             	}else if(data.code==204){//未中奖
-             		vm.maskType=2
-             	}else if(data.code==205){//请完成随叫随到订单后再来抽奖
-             		vm.maskType=3
-             	}else{
-             		alert(data.msg)
-             		vm.maskType=2;
-             	}
-              },
-              error:function(e){
-                alert(JSON.stringify(e));
-              }
-        });
+		JSONP.get("http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getResult?driver_id="+vm.driver_id, function (data) {
+   			vm.showMask=true;
+         	vm.initData();//刷新页面
+         	if(data.code==200){//中奖了
+         		vm.maskType=1;
+         		vm.winPrize=data.msg;
+         	}else if(data.code==204){//未中奖
+         		vm.maskType=2
+         	}else if(data.code==205){//请完成随叫随到订单后再来抽奖
+         		vm.maskType=3
+         	}else{
+         		alert(data.msg)
+         		vm.maskType=2;
+         	}
+ 		});
 	},
 	closeMask:function(){
 		this.showMask=false;
