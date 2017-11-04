@@ -153,27 +153,42 @@ http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getInitPage?driver
             {
                 "name": "A*1",
                 "cellphone": "168****8947",
-                "award_type": 17
+                "award_type": 3
             },
             {
                 "name": "易*",
                 "cellphone": "168****5825",
-                "award_type": 17
+                "award_type": 3
             },
             {
                 "name": "巫*2号",
                 "cellphone": "168****1161",
-                "award_type": 14
+                "award_type": 2
             },
             {
                 "name": "李*智",
                 "cellphone": "137****6909",
-                "award_type": 13
+                "award_type": 1
             },
             {
                 "name": "沈*青",
                 "cellphone": "137****2284",
-                "award_type": 13
+                "award_type": 0
+            },
+            {
+                "name": "沈*青",
+                "cellphone": "137****2284",
+                "award_type": 0
+            },
+            {
+                "name": "沈*青",
+                "cellphone": "137****2284",
+                "award_type": 0
+            },
+            {
+                "name": "沈*青",
+                "cellphone": "137****2284",
+                "award_type": 0
             }
         ],
         "isLogin": 0  // 是否登录
