@@ -193,7 +193,7 @@
 					<img src="img/timer-bg.png" width="100%" height="100%"/>
 					<div class="timer-title">
 						<img class="timer-title-img" src="img/timer-title.png" width="100%" height="100%"/>
-						<span id="timer-num" class="timer-num"></span>
+						<span id="timer-num" class="timer-num" v-html="countdown"></span>
 					</div>
 					<div class="timer-text">
 						<div class="timer-text-order">当前完成“随叫随到”订单数<span id="order-num" class="order-num" >{{orderNums}}</span>单</div>
@@ -256,13 +256,13 @@ var dateTimes= ["2017-11-11 10:00:00","2017-11-11 13:00:00","2017-11-11 17:00:00
 function toTimeStamp(arr){
 	var times = [];
 	arr.forEach(function(time,idx){
-		times.push(Date.parse(new Date(time)))
+		times.push(Date.parse(new Date(time)) / 1000)
 	})
 	return times;
 }
 
 var timeStamps = toTimeStamp(dateTimes);
-//console.log(timeStamps);
+console.log(timeStamps);
 
 
 //获取活动信息司机ID
@@ -286,10 +286,13 @@ new Vue({
   el: '#app',
   data:{
   	isLogin:false,
+  	countdown: "99:10:50",
+  	offset: 0,
+  	interval: null,
   	prizeTypes:["img/prize-type1.png","img/prize-type2.png","img/prize-type3.png","img/prize-type4.png","img/prize-type0.png"],
   	drawPrizeTypes:["img/draw-prize1.png","img/draw-prize24.png","img/draw-prize3.png","img/draw-prize24.png",""],
-  	currentTimeStamp:1509688081,
-  	currentTimeRange:1,
+  	currentTimeStamp:1510365000,//   1510279200
+  	currentTimeRange:0,
 	orderNums:10,
 	drawBtn:false,
 	luckyList:[
@@ -428,6 +431,8 @@ new Vue({
   },
   mounted(){
 //	this.getOrderNum();
+	this.getOffsetTimeStamps()
+	this.getCountdown();
   },
   methods:{
   	
@@ -453,6 +458,34 @@ new Vue({
                 alert(JSON.stringify(e));
               }
         });
+	},
+	getOffsetTimeStamps: function(){
+		this.offset = timeStamps[this.currentTimeRange] - this.currentTimeStamp;
+	},
+	getCountdown: function(){
+		var vm = this;
+		// 根据时间戳差值计算时分秒
+		var hour = Math.floor(vm.offset / (60 * 60));
+		//var min = Math.floor((vm.offset - hour * 60 * 60) / 60);
+		var min = Math.floor(vm.offset/60%60)
+		//var sec = vm.offset - hour * 60 * 60 - min * 60;
+		var sec = Math.floor(vm.offset%60)
+		hour = hour<10 ? "0"+hour : hour;
+		min = min<10 ? "0"+min : min;
+		sec = sec<10 ? "0"+sec : sec;
+		console.log(hour, min, sec);
+		vm.countdown = hour+":"+min+":"+sec;
+		if(!vm.interval && vm.offset > 0){
+			vm.interval = window.setInterval(function(){
+				if(vm.offset<=0){
+					window.clearInterval(vm.interval);
+				}else{
+					vm.offset--;
+					vm.getCountdown();
+				}
+			}, 1000);
+		}
+		
 	}
   }
 })
