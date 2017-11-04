@@ -362,34 +362,6 @@ new Vue({
 				vm.getCountdown();
             }
  		});
-  		
-  		
-		/*$.ajax({
-             type: "GET",
-             url: "http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id="+vm.driver_id,
-             dataType:'jsonp',
-             jsonp:'callback',
-             success: function(data){
-             	if(data.code==200){
-             		console.log(data)
-             		vm.isLogin = data.result.isLogin;
-//           		if(vm.isLogin==0){
-//           			vm.showMask=true;
-//           		}
-             		vm.orderNums = data.result.count;
-             		vm.currentTimeStamp = data.result.currentTimeStamp;
-             		vm.currentTimeRange = data.result.currentTimeRange;
-             		vm.isClick = data.result.isClick;
-             		vm.luckyList = data.result.driverList;
-             		
-             		vm.getOffsetTimeStamps()
-					vm.getCountdown();
-             	}
-              },
-              error:function(e){
-                alert(JSON.stringify(e));
-              }
-        });*/
 	},
 	getResult:function(){//点击抽奖
 		console.log(this.isClick);
