@@ -58,7 +58,7 @@ http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getInitPage?driver
         "count": 17, // 随机随到单数
         "currentTimeStamp": 1509700889, // 当前时间戳
         "currentTimeRange": 3, // 当前时间区间  0 => -10：05  1 => 10：05-13：05  2 => 13：05-17：05  3 => 17：05-20：05 4 => 20：05-24：00 
-        "isClick": 0, // 是否可抽奖
+        "isClick": 0, // 是否可抽奖 0=>不能点击
         "driverList": [ // 中奖司机列表
             {
                 "name": "A*1",
