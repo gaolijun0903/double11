@@ -11,67 +11,19 @@
 		 * { padding:0; margin:0;-webkit-tap-highlight-color: rgba(0,0,0,0); box-sizing: border-box;}
 		HTML ,body { font-size:12px;height:100%;width:100%; font-family: "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
 		li { list-style-type:none;}
-		.wrapper{width: 100%;min-height: 100%;background-image: url(https://i2.Yongche.name/media/g2/M04/19/2E/rBEBJVn9ijyIGcCuAAwR6fafHT4AAKAnwLoGRYADBIB058.jpg);background-size: 100%;}
-		.prize-type{
-			height: 105px;
-			margin-top: -18px;
-			padding: 0 15px;
-		} 
-		.timer{
-			margin: 28px  0 0;
-			height: 180px;
-			position: relative;
-		}
-		.timer .timer-title{
-			position: absolute;
-			top: 12px;
-			left: 0;
-			width: 100%;
-			height: 33px;
-			line-height: 33px;
-			font-size: 20px;
-			font-weight: 400;
-			color: #00fcff;
-		}
-		.timer .timer-num{
-			position: absolute;
-			top: 0;
-			left: 58%;
-		}
-		.timer .timer-text{
-			position: absolute;
-			top: 70px;
-			left: 0;
-			width: 100%;
-    		text-align: center;
-		}
-		.timer .timer-text-order{
-			font-size: 18px;
-			line-height: 60px;
-    		color: #fff;
-		}
-		.timer .timer-text-order .order-num{
-			font-weight: 600;
-    		color: #ffea00;
-		}
-		.timer .timer-text-more{
-			font-size: 16px;
-    		color: #d4aeff;
-		}
-		.draw{
-			position: relative;
-			height: 340px;
-			margin-top: 22px;
-		}
-		.draw .draw-bg{
-			position: absolute;
-			width: 92%;
-			height: 340px;
-    		left: 4%;
-		}
-		.draw .twinkle-bg{
-			animation: twinkle 1s infinite;
-		}
+		input, input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none; color:slateblue; border:none; outline: none; background:transparent; width: 100%;}
+		.wrapper{ width: 100%;min-height: 100%;background-image: url(https://i2.Yongche.name/media/g2/M04/19/2E/rBEBJVn9ijyIGcCuAAwR6fafHT4AAKAnwLoGRYADBIB058.jpg);background-size: 100%;}
+		.prize-type{ height: 105px; margin-top: -18px; padding: 0 15px;} 
+		.timer{ margin: 28px  0 0; height: 180px; position: relative;}
+		.timer .timer-title{ position: absolute; top: 12px; left: 0; width: 100%; height: 33px; line-height: 33px; font-size: 20px; font-weight: 400; color: #00fcff;}
+		.timer .timer-num{ position: absolute; top: 0; left: 58%;}
+		.timer .timer-text{ position: absolute; top: 70px; left: 0; width: 100%; text-align: center; }
+		.timer .timer-text-order{ font-size: 18px; line-height: 60px; color: #fff; }
+		.timer .timer-text-order .order-num{ font-weight: 600; color: #ffea00;}
+		.timer .timer-text-more{ font-size: 16px; color: #d4aeff; }
+		.draw{ position: relative; height: 340px; margin-top: 22px; }
+		.draw .draw-bg{ position: absolute; width: 92%; height: 340px; left: 4%; }
+		.draw .twinkle-bg{animation: twinkle 1s infinite;}
 		@keyframes twinkle {
 		  0% {
 		    opacity: 0;
@@ -80,25 +32,9 @@
 		    top: 1;
 		  }
 		}
-		
-		.draw .draw-box-btn{
-			position: relative;
-		    top: 50px;
-		    left: 33%;
-		    z-index: 10;
-		    width: 34%;
-		}
-		.draw .draw-box{
-			margin-bottom: 10px;
-		}
-		.draw .draw-prize{
-			position: absolute;
-			top: 2%;
-			right: 8%;
-			width: 34%;
-			z-index: 10;
-			animation: pop 1s infinite;
-		}
+		.draw .draw-box-btn{ position: relative; top: 50px; left: 33%; z-index: 10;  width: 34%; }
+		.draw .draw-box{ margin-bottom: 10px; }
+		.draw .draw-prize{ position: absolute; top: 2%; right: 8%; width: 34%; z-index: 10; animation: pop 1s infinite;}
 		@keyframes pop {
 		  0% {
 		    top: 2%;
@@ -110,86 +46,23 @@
 		    top: 2.5%;
 		  }
 		}
+		.lucky-list{ position: relative; left: 4%; margin-top: 18px; height: 500px; width: 92%; }
+		.lucky-list .lucky-title{ position: absolute; top: 0; left: 20%; width: 60%; z-index: 10; }
+		.lucky-list .lucky-bg{ position: absolute; top: 6%; width: 98%; height: 450px; overflow-y: hidden; padding:30px 0 10px; background: #6844eb; border-radius: 10px; text-align: center; font-size: 16px; line-height: 30px; }
+		.lucky-list .lucky-bg .list-body{ overflow-y: scroll; height: 380px; }
+		.lucky-list .lucky-bg .list-title .cell{ color: #fff; display: inline-block; }
+		.lucky-list .lucky-bg .list-item .cell{ color: #d4aeff; height: 30px; display: inline-block; overflow: hidden; }
+		.lucky-list .lucky-bg .name{ width: 25%; }
+		.lucky-list .lucky-bg .tel{ width: 35%; }
+		.lucky-list .lucky-bg .prize{ width: 36%; }
+		.mask-wrapper{ position: fixed; top: 0; left: 0;  width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 20; }
+		.mask-wrapper .mask-inner{ position: absolute; width: 90%; top: 23%; left: 5%; }
+		.mask-wrapper .mask-inner .mask-prize{ text-align: center; font-size: 16px; height:16px;color: yellow;  margin-top: -81%; }
+		.mask-wrapper .mask-inner .mask-btn{ position: absolute; width: 80%; left: 10%; top: 268%; height: 46px; }
 		
-		
-		.lucky-list{
-			position: relative;
-    		left: 4%;
-    		margin-top: 18px;
-			height: 500px;
-			width: 92%;
-		}
-		.lucky-list .lucky-title{
-			position: absolute;
-			top: 0;
-			left: 20%;
-			width: 60%;
-			z-index: 10;
-		}
-		.lucky-list .lucky-bg{
-			position: absolute;
-			top: 6%;
-			width: 98%;
-    		max-height: 450px;
-    		overflow-y: hidden;
-			padding:30px 0 10px;
-			background: #6844eb;
-			border-radius: 10px;
-			text-align: center;
-			font-size: 16px;
-			line-height: 30px;
-		}
-		.lucky-list .lucky-bg .list-body{
-			overflow-y: scroll;
-    		max-height: 400px;
-		}
-		.lucky-list .lucky-bg .list-title .cell{
-			color: #fff;
-			display: inline-block;
-		}
-		.lucky-list .lucky-bg .list-item .cell{
-			color: #d4aeff;
-			height: 30px;
-			display: inline-block;
-			overflow: hidden;
-		}
-		.lucky-list .lucky-bg .name{
-			width: 25%;
-		}
-		.lucky-list .lucky-bg .tel{
-			width: 35%;
-		}
-		.lucky-list .lucky-bg .prize{
-			width: 36%;
-		}
-		.mask-wrapper{
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: rgba(0,0,0,0.5);
-			z-index: 20;
-		}
-		.mask-wrapper .mask-inner{
-			position: absolute;
-			width: 70%;
-		    top: 30%;
-		    left: 15%;
-		}
-		.mask-wrapper .mask-inner .mask-btn{
-			position: absolute;
-		    width: 80%;
-		    left: 10%;
-		    top: 268%;
-		    height: 46px;
-		}
-		.mask-wrapper .mask-inner .mask-prize{
-			text-align: center;
-		    font-size: 16px;
-		    color: yellow;
-		    margin-top: -81%;
-		}
+		.mask-wrapper .mask-inner .mask-tel-id{ position: absolute; width: 45%; left: 38%; top: 372%; height: 60px; line-height: 28px; }
+		.mask-wrapper .mask-inner .mask-btn-login{ position: absolute; top: 505%; }
+		.toast{ position: fixed; top: 35%; left: 10%; width: 80%; height: 40px; line-height: 40px; background: rgba(0,0,0,0.5); color: #fff; z-index: 30; text-align: center; border-radius: 10px;font-size: 18px;}
 		</style>
 		
 		<script src="https://i1.Yongche.name/s/js/201711/jsonp.js?1478153218"></script>
@@ -256,18 +129,36 @@
 					</div>
 				</div>
 			</div>
-			<div class="mask-wrapper" v-show="showMask">
+			<div class="mask-wrapper" v-show="showMask && isLogin">
 				<div class="mask-inner">
 					<div class="mask-bg">
 						<img v-bind:src="showMaskBg" width="100%"/>
 					</div>
 					<div class="mask-prize">{{winPrize}}</div>
-					<div class="mask-btn" @click=closeMask>
-						<img v-show="isLogin" src="https://i3.Yongche.name/media/g2/M03/19/2E/rBEBJVn9jHyIe_znAAArBrpqmz0AAKAngOXaswAACse777.png" width="100%"/>
-						<!--<img src="https://i2.Yongche.name/media/g2/M01/19/2E/rBEBP1n9iq2IQXiWAAAmx2QzaDwAAKAoQCwdHQAACbf432.png" width="100%"/>-->
+					<div class="mask-btn" v-show="isLogin" @click=closeMask>
+						<img src="https://i3.Yongche.name/media/g2/M03/19/2E/rBEBJVn9jHyIe_znAAArBrpqmz0AAKAngOXaswAACse777.png" width="100%"/>
 					</div>
 				</div>
 			</div>
+			<div class="mask-wrapper" v-show="showMask && !isLogin">
+				<div class="mask-inner">
+					<div class="mask-bg">
+						<img v-bind:src="showMaskBg" width="100%"/>
+					</div>
+					<div class="mask-tel-id">
+						<div class="mask-tel">
+							<input type="number" name="tel" placeholder="请输入手机号" oninput="if(value.length>11)value=value.slice(0,11)" v-model="telNum" />
+						</div>
+						<div class="mask-id">
+							<input type="number" name="idcard" placeholder="请输入身份证后四位" oninput="if(value.length>4)value=value.slice(0,4)" v-model="idCard" />
+						</div>
+					</div>
+					<div class="mask-btn-login" @click=login>
+						<img src="https://i3.Yongche.name/media/g2/M04/19/31/rBEBP1oBRiaIdAqGAAAGFaJ-S1wAAKBiwP_-TgAAAbI307.png" width="100%"/>
+					</div>
+				</div>
+			</div>
+			<div class="toast" v-show="showToast">{{toastMsg}}</div>
 		</div>
 			
 <script type="text/javascript">
@@ -279,20 +170,25 @@ new Vue({
   	countdown: "00:00:00",
   	offset: 0,
   	interval: null,
-  	currentTimeStamp:1510364990,
+  	currentTimeStamp:0,
   	currentTimeRange:0,
   	prizeTypes:["https://i3.Yongche.name/media/g2/M01/19/2E/rBEBP1n9jQeIRTU3AABDWUSUIFAAAKAoQE6H04AAENx814.png","https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9jQeIWO7LAABBEXbdda8AAKAoQE6Yr8AAEEp603.png","https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9jQeIK5lrAABDo5u2XScAAKAoQE6o-gAAEO7103.png","https://i1.Yongche.name/media/g2/M01/19/2E/rBEBP1n9jUuIOlC5AABCjgC2J_4AAKAoQF1z-8AAEKm317.png","https://i2.Yongche.name/media/g2/M01/19/2E/rBEBP1n9jQeIWrOUAABGFFsrpUsAAKAoQE52SIAAEYs739.png"],
   	drawPrizeTypes:["https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9iq6IVSywAAAdgz8Azy8AAKAoQCwIm0AAB2b314.png","https://i2.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IKpUBAAAhpZ1MZlMAAKAoAGAcdIAACG9800.png","https://i3.Yongche.name/media/g2/M01/19/2E/rBEBP1n9iq2IBBU2AAAecXiHi2QAAKAoQCwQAgAAB6J497.png","https://i2.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IKpUBAAAhpZ1MZlMAAKAoAGAcdIAACG9800.png",""],
   	drawBtnTypes:["https://i2.Yongche.name/media/g2/M01/19/2E/rBEBJVn9iq6IQ0XOAAAU6wIkjlcAAKAoQCwDWoAABUD275.png","https://i1.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IHZKGAAAU3ilU2-oAAKAoAGAXNwAABT2072.png","https://i3.Yongche.name/media/g2/M04/19/2E/rBEBJVn9iK-IUMaFAAAVy5rudWgAAKAnwKiOWsAABXj236.png"],
-  	maskBgs:["https://i2.Yongche.name/media/g2/M03/19/30/rBEBJVn_xW2Iei8mAAKROexqqgMAAKBJgIku4sAApFR761.png","https://i2.Yongche.name/media/g2/M03/19/2E/rBEBP1n9jHyIGo_YAARTK_MEi3gAAKAngOg7PoABFND414.png","https://i3.Yongche.name/media/g2/M03/19/2E/rBEBP1n9jHyIOz8UAAScoI6fLKkAAKAngOcUEIABJy4206.png","https://i2.Yongche.name/media/g2/M03/19/2E/rBEBJVn9jHyIGQE_AAS6QNu_Uh0AAKAngOXleoABLpY886.png"],
+  	maskBgs:["https://i3.Yongche.name/media/g2/M04/19/31/rBEBP1oBRiaID4xDAAI8zwgjTeMAAKBqwDMPJoAAjzn893.png","https://i2.Yongche.name/media/g2/M03/19/2E/rBEBP1n9jHyIGo_YAARTK_MEi3gAAKAngOg7PoABFND414.png","https://i3.Yongche.name/media/g2/M03/19/2E/rBEBP1n9jHyIOz8UAAScoI6fLKkAAKAngOcUEIABJy4206.png","https://i2.Yongche.name/media/g2/M03/19/2E/rBEBJVn9jHyIGQE_AAS6QNu_Uh0AAKAngOXleoABLpY886.png"],
   	isLogin:0,
+  	telNum:null,
+  	idCard:null,
   	isClick:0,
 	orderNums:0,
 	drawBtn:false,
 	luckyList:[],
-	showMask:false,
+	showMask:true,
 	maskType:0,
-	winPrize:"111"
+	winPrize:"",
+	showToast:false,
+	toastMsg:"",
+	driver_id:0
   },
   computed:{
   	currentPrizeType:function(){
@@ -309,13 +205,42 @@ new Vue({
   	},
   	showMaskBg:function(){
   		var idx = this.isLogin==0 ? 0 : this.maskType;
-		return this.maskBgs[idx];
+		return this.maskBgs[0];
   	}
   },
   mounted: function(){
-	this.initData();
+//	this.initData();
   },
   methods:{
+  	login:function(){//登录，传手机号和身份证后四位
+  		var vm = this;
+		if(!vm.telNum || !vm.idCard){
+			vm.showToast = true;
+     		vm.toastMsg="电话号或身份证不能为空";
+     		setTimeout(function(){
+     			vm.showToast = false;
+     		},2000)
+     		return
+		}
+  		JSONP.init({
+  			error:function(ex){
+  				alert("Failed to load:" + ex.url);
+  			}
+  		})
+		JSONP.get("https://yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/login?cellphone="+vm.telNum+"&id_card="+vm.idCard, function (data) {
+   			if(data.code==200 &&data.result.status==1){
+         		vm.showMask=false;
+         		vm.driver_id = data.result.driver_id;
+         		vm.initData();//刷新页面
+            }else{//登录信息错误不可抽奖
+            	vm.showToast = true;
+         		vm.toastMsg=data.msg;
+         		setTimeout(function(){
+         			vm.showToast = false;
+         		},2000)
+            }
+ 		});
+  	},
   	initData:function (){// 获取随叫随到订单数
   		var vm = this;
   		JSONP.init({
@@ -323,14 +248,13 @@ new Vue({
   				alert("Failed to load:" + ex.url);
   			}
   		})
-		JSONP.get("https://yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getInitPage", function (data) {
+		JSONP.get("https://yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id="+vm.driver_id, function (data) {
    			if(data.code==200){
          		console.log(data)
          		vm.isLogin = data.result.isLogin;
-//        		if(vm.isLogin==0){
-//         			vm.showMask=true;
-//        		}
-          		
+          		if(vm.isLogin==0){
+           			vm.showMask=true;
+          		}
           		vm.timeStamps = vm.toTimeStamp(data.result.dateTimes);
          		vm.orderNums = data.result.count;
          		vm.currentTimeStamp = data.result.currentTimeStamp;
@@ -353,32 +277,24 @@ new Vue({
   				alert("Failed to load:" + ex.url);
   			}
   		})
-		JSONP.get("https://yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getResult", function (data) {
-   			vm.showMask=true;
-         	vm.initData();//刷新页面
-         	//alert("msg: "+data.msg);
+		JSONP.get("https://yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getResult?driver_id="+vm.driver_id, function (data) {
+   			
          	if(data.code==200){//中奖了
          		vm.maskType=1;
          		vm.winPrize=data.msg;
          	}else if(data.code==203){//未中奖
          		vm.maskType=2
-         	}else if(data.code==204){//请登陆后再来抽奖                                   //TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-         		vm.maskType=0
          	}else if(data.code==205){//请完成随叫随到订单后再来抽奖
          		vm.maskType=3
          	}else{
          		vm.maskType=2;
          	}
+         	vm.showMask=true;
+         	vm.initData();//刷新页面
  		});
 	},
 	closeMask:function(){
 		this.showMask=false;
-		if(this.isLogin==0){//未登录跳转页面
-//		    window.opener=null;
-//		    window.open('','_self');
-//			window.close();
-			//window.location.href="yidaodriver://closeWindow";
-		}
 	},
 	toPrize:function(num){
 		if(num===0){

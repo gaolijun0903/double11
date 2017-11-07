@@ -2,10 +2,24 @@
 https://prototype.yongche.org/hujingjing/%E5%8F%8C%E5%8D%81%E4%B8%80%E6%8A%BD%E5%A5%96%E6%B4%BB%E5%8A%A8/index.html#g=1&p=home
 
 16825825825
-16886318947
+16886318947  0001
 16820171161
 16886318957 测试手机号
 
+// 判断登录信息是否正确
+http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/login?cellphone=16825825825&id_card=8147
+参数说明
+  cellphone 司机手机号
+  id_card 司机身份证后四位
+
+返回值
+{
+    "code": 200,
+    "msg": "OK",
+    "result": {
+        "status": 1 // 1 可抽奖 0 登录信息错误不可抽奖
+    }
+}
 
 // 抽奖接口
 
