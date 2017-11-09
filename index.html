@@ -12,7 +12,7 @@
 		HTML ,body { font-size:12px;height:100%;width:100%; font-family: "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;}
 		li { list-style-type:none;}
 		input, input[type="button"], input[type="submit"], input[type="reset"] {-webkit-appearance: none; color:slateblue; border:none; outline: none; background:transparent; width: 100%;}
-		.wrapper{ width: 100%;min-height: 100%;background-image: url(https://i2.Yongche.name/media/g2/M04/19/2E/rBEBJVn9ijyIGcCuAAwR6fafHT4AAKAnwLoGRYADBIB058.jpg);background-size: 100%;}
+		.wrapper{ width: 100%;min-height: 100%; background-color: #5d00c7;}
 		.prize-type{ height: 105px; margin-top: -18px; padding: 0 15px;} 
 		.timer{ margin: 28px  0 0; height: 180px; position: relative;}
 		.timer .timer-title{ position: absolute; top: 12px; left: 0; width: 100%; height: 33px; line-height: 35px; font-size: 20px; font-weight: 400; color: #00fcff;}
@@ -66,10 +66,9 @@
 		.toast{ position: fixed; top: 35%; left: 10%; width: 80%; height: 40px; line-height: 40px; background: rgba(0,0,0,0.5); color: #fff; z-index: 30; text-align: center; border-radius: 10px;font-size: 18px;}
 		</style>
 		
-		<!--<script src="https://i1.Yongche.name/s/js/201711/jsonp.js?1478153218"></script>-->
+	
 		<script src="https://i3.Yongche.name/s/js/201711/vue.min.js?1478153218"></script>
-		<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
-		<!--<script src="<{asset:js/jquery/jquery-1.8.3.min.js}>"></script>-->	
+    	<script src="<{asset:js/jquery/jquery-1.8.3.min.js}>"></script>
 	</head>
 	<body>
 		<div id="app">
@@ -164,25 +163,7 @@
 		</div>
 			
 <script type="text/javascript">
-alert(111)
-$.ajax({
-     type: "GET",
-     url: "//testing.market.Yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id=50056790",
-     dataType:'jsonp',
-     crossDomain:true, // ios系统必须这样用，否则https无法正确通信
-     jsonp:'callback',
-     success: function(data){
-     	if(data.code==200){
-     		alert(50056790)
-     		
-        }
-      },
-      error:function(e){
-        alert(JSON.stringify(e));
-      }
-});
-        
-  console.log(Vue);      
+      
 new Vue({
   el: '#app',
   data:{
@@ -193,7 +174,7 @@ new Vue({
   	currentTimeStamp:0,
   	currentTimeRange:0,
   	prizeTypes:["https://i3.Yongche.name/media/g2/M01/19/2E/rBEBP1n9jQeIRTU3AABDWUSUIFAAAKAoQE6H04AAENx814.png","https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9jQeIWO7LAABBEXbdda8AAKAoQE6Yr8AAEEp603.png","https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9jQeIK5lrAABDo5u2XScAAKAoQE6o-gAAEO7103.png","https://i1.Yongche.name/media/g2/M01/19/2E/rBEBP1n9jUuIOlC5AABCjgC2J_4AAKAoQF1z-8AAEKm317.png","https://i2.Yongche.name/media/g2/M01/19/2E/rBEBP1n9jQeIWrOUAABGFFsrpUsAAKAoQE52SIAAEYs739.png"],
-  	drawPrizeTypes:["https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9iq6IVSywAAAdgz8Azy8AAKAoQCwIm0AAB2b314.png","https://i2.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IKpUBAAAhpZ1MZlMAAKAoAGAcdIAACG9800.png","https://i3.Yongche.name/media/g2/M01/19/2E/rBEBP1n9iq2IBBU2AAAecXiHi2QAAKAoQCwQAgAAB6J497.png","https://i2.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IKpUBAAAhpZ1MZlMAAKAoAGAcdIAACG9800.png","http://i3.yongche.name/media/g2/M04/19/33/rBEBJVoCxrWIIT1GAAAgE2oEotEAAKCawIzUSQAACAr317.png"],
+  	drawPrizeTypes:["https://i1.Yongche.name/media/g2/M01/19/2E/rBEBJVn9iq6IVSywAAAdgz8Azy8AAKAoQCwIm0AAB2b314.png","https://i2.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IKpUBAAAhpZ1MZlMAAKAoAGAcdIAACG9800.png","https://i3.Yongche.name/media/g2/M01/19/2E/rBEBP1n9iq2IBBU2AAAecXiHi2QAAKAoQCwQAgAAB6J497.png","https://i2.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IKpUBAAAhpZ1MZlMAAKAoAGAcdIAACG9800.png","<{asset:media/g2/M04/19/33/rBEBJVoCxrWIIT1GAAAgE2oEotEAAKCawIzUSQAACAr317.png}>"],
   	drawBtnTypes:["https://i2.Yongche.name/media/g2/M01/19/2E/rBEBJVn9iq6IQ0XOAAAU6wIkjlcAAKAoQCwDWoAABUD275.png","https://i1.Yongche.name/media/g2/M02/19/2E/rBEBP1n9iq2IHZKGAAAU3ilU2-oAAKAoAGAXNwAABT2072.png","https://i3.Yongche.name/media/g2/M04/19/2E/rBEBJVn9iK-IUMaFAAAVy5rudWgAAKAnwKiOWsAABXj236.png"],
   	maskBgs:["https://i3.Yongche.name/media/g2/M03/19/32/rBEBJVoCYMyIELiVAAN5o9ioJSMAAKB-wG2NrcAA3m7481.png","https://i2.Yongche.name/media/g2/M03/19/2E/rBEBP1n9jHyIGo_YAARTK_MEi3gAAKAngOg7PoABFND414.png","https://i3.Yongche.name/media/g2/M03/19/2E/rBEBP1n9jHyIOz8UAAScoI6fLKkAAKAngOcUEIABJy4206.png","https://i2.Yongche.name/media/g2/M03/19/2E/rBEBJVn9jHyIGQE_AAS6QNu_Uh0AAKAngOXleoABLpY886.png"],
   	isLogin:0,
@@ -244,7 +225,7 @@ new Vue({
 		}
 		$.ajax({
              type: "GET",
-             url: "//testing.market.Yongche.org/miscellaneous/DoubleEleven/login?cellphone="+vm.telNum+"&id_card="+vm.idCard,
+             url: "//yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/login?cellphone="+vm.telNum+"&id_card="+vm.idCard,
              dataType:'jsonp',
              crossDomain:true, // ios系统必须这样用，否则https无法正确通信
              jsonp:'callback',
@@ -265,31 +246,12 @@ new Vue({
                 alert(JSON.stringify(e));
               }
         });
-        
-  		/*JSONP.init({
-  			error:function(ex){
-  				alert("Failed to load:" + ex.url);
-  			}
-  		})
-		JSONP.get("//yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/login?cellphone="+vm.telNum+"&id_card="+vm.idCard, function (data) {
-   			if(data.code==200 &&data.result.status==1){
-         		vm.showMask=false;
-         		vm.driver_id = data.result.driver_id;
-         		vm.initData();//刷新页面
-            }else{//登录信息错误不可抽奖
-            	vm.showToast = true;
-         		vm.toastMsg=data.msg;
-         		setTimeout(function(){
-         			vm.showToast = false;
-         		},2000)
-            }
- 		});*/
   	},
   	initData:function (){// 获取随叫随到订单数
   		var vm = this;
   		$.ajax({
              type: "GET",
-             url: "//testing.market.Yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id="+vm.driver_id,
+             url: "//yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/getInitPage?driver_id="+vm.driver_id,
              dataType:'jsonp',
              crossDomain:true, // ios系统必须这样用，否则https无法正确通信
              jsonp:'callback',
@@ -314,28 +276,6 @@ new Vue({
                 alert(JSON.stringify(e));
               }
         });
-  		/*JSONP.init({
-  			error:function(ex){
-  				alert("Failed to load:" + ex.url);
-  			}
-  		})
-		JSONP.get("//yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getInitPage?driver_id="+vm.driver_id, function (data) {
-   			if(data.code==200){
-         		console.log(data)
-         		vm.isLogin = data.result.isLogin;
-          		if(vm.isLogin==0){
-           			vm.showMask=true;
-          		}
-          		vm.timeStamps = vm.toTimeStamp(data.result.dateTimes);
-         		vm.orderNums = data.result.count;
-         		vm.currentTimeStamp = data.result.currentTimeStamp;
-         		vm.currentTimeRange = data.result.currentTimeRange;
-         		vm.isClick = data.result.isClick;
-         		vm.luckyList = data.result.driverList;
-         		
-         		vm.getOffsetTimeStamps();
-            }
- 		});*/
 	},
 	getResult:function(){//点击抽奖
 		if(this.isClick<=0){//不可以抽奖
@@ -345,7 +285,7 @@ new Vue({
 		var vm = this;
 		$.ajax({
              type: "GET",
-             url: "//yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getResult?driver_id="+vm.driver_id,
+             url: "//yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/getResult?driver_id="+vm.driver_id,
              dataType:'jsonp',
              crossDomain:true, // ios系统必须这样用，否则https无法正确通信
              jsonp:'callback',
@@ -367,27 +307,6 @@ new Vue({
                 alert(JSON.stringify(e));
               }
         });
-        
-		/*JSONP.init({
-  			error:function(ex){
-  				alert("Failed to load:" + ex.url);
-  			}
-  		})
-		JSONP.get("//yaoyakun.market.Yongche.org/miscellaneous/DoubleEleven/getResult?driver_id="+vm.driver_id, function (data) {
-   			
-         	if(data.code==200){//中奖了
-         		vm.maskType=1;
-         		vm.winPrize=data.msg;
-         	}else if(data.code==204){//未中奖
-         		vm.maskType=2
-         	}else if(data.code==205){//请完成随叫随到订单后再来抽奖
-         		vm.maskType=3
-         	}else{
-         		vm.maskType=2;
-         	}
-         	vm.showMask=true;
-         	vm.initData();//刷新页面
- 		});*/
 	},
 	closeMask:function(){
 		this.showMask=false;

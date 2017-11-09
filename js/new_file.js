@@ -22,7 +22,7 @@ http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/login?cellphone=16
 }
 
 // 抽奖接口
-
+http://yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/getInitPage
 http://yaoyakun.market.yongche.org/miscellaneous/DoubleEleven/getResult?cellphone=16825825825
 
 参数说明  
