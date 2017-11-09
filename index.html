@@ -46,9 +46,9 @@
 		    top: 2.5%;
 		  }
 		}
-		.lucky-list{ position: relative; left: 4%; margin-top: 18px; height: 500px; width: 92%; }
+		.lucky-list{ position: relative; left: 4%; margin-top: 18px; height: 500px; width: 92%; padding-top: 30px;}
 		.lucky-list .lucky-title{ position: absolute; top: 0; left: 20%; width: 60%; z-index: 10; }
-		.lucky-list .lucky-bg{ position: absolute; top: 6%; width: 98%; height: 450px; overflow-y: hidden; padding:30px 0 10px; background: #6844eb; border-radius: 10px; text-align: center; font-size: 16px; line-height: 30px; }
+		.lucky-list .lucky-bg{ /*position: absolute; top: 6%;*/ width: 98%; height: 450px; overflow-y: hidden; padding:30px 0 10px; background: #6844eb; border-radius: 10px; text-align: center; font-size: 16px; line-height: 30px; }
 		.lucky-list .lucky-bg .list-body{ overflow-y: scroll; height: 380px; }
 		.lucky-list .lucky-bg .list-title .cell{ color: #fff; display: inline-block; }
 		.lucky-list .lucky-bg .list-item .cell{ color: #d4aeff; height: 30px; display: inline-block; overflow: hidden; }
@@ -69,6 +69,7 @@
 	
 		<script src="https://i3.Yongche.name/s/js/201711/vue.min.js?1478153218"></script>
     	<script src="<{asset:js/jquery/jquery-1.8.3.min.js}>"></script>
+    	<!--<script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>-->
 	</head>
 	<body>
 		<div id="app">
@@ -120,10 +121,12 @@
 							<div class="cell prize">奖品</div>
 						</div>
 						<div class="list-body">
-							<div class="list-item" v-for="item in luckyList">
-								<div class="cell name" v-html="item.name"></div>
-								<div class="cell tel" v-html="item.cellphone"></div>
-								<div class="cell prize" v-html="toPrize(item.award_type)"></div>
+							<div id="list-body">
+								<div class="list-item" v-for="item in luckyList">
+									<div class="cell name" v-html="item.name"></div>
+									<div class="cell tel" v-html="item.cellphone"></div>
+									<div class="cell prize" v-html="toPrize(item.award_type)"></div>
+								</div>
 							</div>
 						</div>
 						
@@ -163,10 +166,27 @@
 		</div>
 			
 <script type="text/javascript">
-      
+    function stopBubble(odiv) {
+        console.log(odiv)
+	    if(odiv){
+	        odiv.addEventListener("touchstart",function(ev){
+	            ev.cancelBubble = true;
+	        })
+	        odiv.addEventListener("touchmove",function(ev){
+	            ev.cancelBubble = true;
+	            ev.preventDefault();
+	            return false;
+	        })
+	        odiv.addEventListener("touchend",function(ev){
+	            ev.cancelBubble = true;
+	        })
+	    }
+	}     
 new Vue({
   el: '#app',
   data:{
+    http:"//yaoyakun.market.Yongche.org",
+    //http:"//market.Yongche.com",
 	timeStamps:[],
   	countdown: "00:00:00",
   	offset: 0,
@@ -211,6 +231,11 @@ new Vue({
   },
   mounted: function(){
 	this.initData();
+	
+	console.log("mounted---"+document.getElementById("list-body"))
+	setTimeout(function(){
+		stopBubble(document.getElementById("list-body"));
+	},1000)
   },
   methods:{
   	login:function(){//登录，传手机号和身份证后四位
@@ -225,7 +250,7 @@ new Vue({
 		}
 		$.ajax({
              type: "GET",
-             url: "//yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/login?cellphone="+vm.telNum+"&id_card="+vm.idCard,
+             url: vm.http+"/miscellaneous/Driverdoubleeleven/login?cellphone="+vm.telNum+"&id_card="+vm.idCard,
              dataType:'jsonp',
              crossDomain:true, // ios系统必须这样用，否则https无法正确通信
              jsonp:'callback',
@@ -251,7 +276,7 @@ new Vue({
   		var vm = this;
   		$.ajax({
              type: "GET",
-             url: "//yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/getInitPage?driver_id="+vm.driver_id,
+             url: vm.http+"/miscellaneous/Driverdoubleeleven/getInitPage?driver_id="+vm.driver_id,
              dataType:'jsonp',
              crossDomain:true, // ios系统必须这样用，否则https无法正确通信
              jsonp:'callback',
@@ -273,7 +298,8 @@ new Vue({
 	            }
               },
               error:function(e){
-                alert(JSON.stringify(e));
+                //alert(JSON.stringify(e));
+                alert("网路异常");
               }
         });
 	},
@@ -285,7 +311,7 @@ new Vue({
 		var vm = this;
 		$.ajax({
              type: "GET",
-             url: "//yaoyakun.market.Yongche.org/miscellaneous/Driverdoubleeleven/getResult?driver_id="+vm.driver_id,
+             url: vm.http+"/miscellaneous/Driverdoubleeleven/getResult?driver_id="+vm.driver_id,
              dataType:'jsonp',
              crossDomain:true, // ios系统必须这样用，否则https无法正确通信
              jsonp:'callback',
