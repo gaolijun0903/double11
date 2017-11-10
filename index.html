@@ -151,10 +151,10 @@
 					</div>
 					<div class="mask-tel-id">
 						<div class="mask-tel">
-							<input type="number" name="tel" placeholder="请输入手机号" oninput="if(value.length>11)value=value.slice(0,11)" v-model="telNum" />
+							<input type="number" name="tel" placeholder="请输入手机号" oninput="if(value.length>11);value=value.slice(0,11)" v-model="telNum" />
 						</div>
 						<div class="mask-id">
-							<input type="number" name="idcard" placeholder="请输入身份证后四位" oninput="if(value.length>4)value=value.slice(0,4)" v-model="idCard" />
+							<input type="number" name="idcard" placeholder="请输入身份证后四位" oninput="if(value.length>4);value=value.slice(0,4)" v-model="idCard" />
 						</div>
 					</div>
 					<div class="mask-btn-login" @click=login>
@@ -174,7 +174,7 @@
 	        })
 	        odiv.addEventListener("touchmove",function(ev){
 	            ev.cancelBubble = true;
-	            ev.preventDefault();
+	            //ev.preventDefault();
 	            return false;
 	        })
 	        odiv.addEventListener("touchend",function(ev){
@@ -185,8 +185,8 @@
 new Vue({
   el: '#app',
   data:{
-    http:"//yaoyakun.market.Yongche.org",
-    //http:"//market.Yongche.com",
+    //http:"//yaoyakun.market.Yongche.org",
+    http:"//market.Yongche.com",
 	timeStamps:[],
   	countdown: "00:00:00",
   	offset: 0,
